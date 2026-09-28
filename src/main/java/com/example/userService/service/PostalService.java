@@ -4,22 +4,17 @@ import com.example.userService.model.Postal;
 import com.example.userService.repository.PostalRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Array;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-@PropertySource(value = "classpath:application.properties")
 @Service
 public class PostalService {
     @Value("${api.postal.apiKey}")

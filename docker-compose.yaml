@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   db:
@@ -6,23 +6,16 @@ services:
     container_name: postgres
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_USER=admin
     volumes:
       - userservice:/var/lib/postgresql/data
     restart: always
   backend:
     build: .
     container_name: userService
+    env_file:
+      - .env
     ports:
-    - "8080:8080"
-    environment:
-      DB_CONT_NAME: db
-      DB_PORT: 5432
-      DB_DATABASE: postgres
-#      paste the api key below
-      API_KEY:
+      - "8080:8080"
     depends_on:
       - db
     restart: always
