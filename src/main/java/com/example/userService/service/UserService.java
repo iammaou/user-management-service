@@ -3,13 +3,9 @@ package com.example.userService.service;
 import com.example.userService.model.Postal;
 import com.example.userService.model.User;
 import com.example.userService.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.sql.Array;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;

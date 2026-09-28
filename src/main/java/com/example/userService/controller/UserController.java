@@ -1,7 +1,5 @@
 package com.example.userService.controller;
 
-import com.example.userService.model.Postal;
-import com.example.userService.service.PostalService;
 import com.example.userService.service.UserService;
 import com.example.userService.model.User;
 import jakarta.validation.Valid;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

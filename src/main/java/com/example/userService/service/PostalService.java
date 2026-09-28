@@ -47,10 +47,10 @@ public class PostalService {
 
         if(responseCode == HttpURLConnection.HTTP_OK){
             StringBuilder sb = new StringBuilder();
-            Scanner scanner = new Scanner(connection.getInputStream());
-
-            while (scanner.hasNext()){
-                sb.append(scanner.nextLine());
+            try (Scanner scanner = new Scanner(connection.getInputStream())) {
+                while (scanner.hasNext()){
+                    sb.append(scanner.nextLine());
+                }
             }
 
             ObjectMapper objectMapper = new ObjectMapper();
