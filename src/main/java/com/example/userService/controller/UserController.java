@@ -1,10 +1,12 @@
 package com.example.userService.controller;
 
 import com.example.userService.service.UserService;
+import com.example.userService.DTO.UserDTO;
 import com.example.userService.model.User;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +23,19 @@ public class UserController {
     private UserService userServ;
 
     @GetMapping("/users")
-    public List<User> getAll() {
-        return userServ.listAll();
+    public ResponseEntity<List<UserDTO>> getAll() {
+        return ResponseEntity.ok(userServ.listAll());
     }
 
     @GetMapping("/users/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userServ.get(id);
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+        UserDTO user = userServ.get(id).orElse(null);
+
+        return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
     }
 
     @PostMapping("/users")
-    public User saveUser(@Valid @RequestBody User user) throws IOException {
+    public UserDTO saveUser(@Valid @RequestBody User user) throws IOException {
         return userServ.save(user);
     }
 
